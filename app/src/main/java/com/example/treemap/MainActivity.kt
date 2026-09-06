@@ -3,9 +3,10 @@ package com.example.treemap
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import java.util.TreeMap
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +16,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etPP2: EditText
     private lateinit var etPP3: EditText
     private lateinit var btnGuardar: Button
+    private lateinit var btnOrdenAlfabetico: Button
+    private lateinit var btnOrdenNumerico: Button
+    private lateinit var rvEstudiantes: RecyclerView
+
+    private lateinit var adapter: EstudianteAdapter
 
     // TreeMap que guarda a los estudiantes ordenados automáticamente por nombre (clave)
     private val estudiantes = TreeMap<String, Estudiante>()
@@ -28,9 +34,24 @@ class MainActivity : AppCompatActivity() {
         etPP2 = findViewById(R.id.etPP2)
         etPP3 = findViewById(R.id.etPP3)
         btnGuardar = findViewById(R.id.btnGuardar)
+        btnOrdenAlfabetico = findViewById(R.id.btnOrdenAlfabetico)
+        btnOrdenNumerico = findViewById(R.id.btnOrdenNumerico)
+        rvEstudiantes = findViewById(R.id.rvEstudiantes)
+
+        adapter = EstudianteAdapter(emptyList())
+        rvEstudiantes.layoutManager = LinearLayoutManager(this)
+        rvEstudiantes.adapter = adapter
 
         btnGuardar.setOnClickListener {
             guardarEstudiante()
+        }
+
+        btnOrdenAlfabetico.setOnClickListener {
+            ordenarAlfabeticamente()
+        }
+
+        btnOrdenNumerico.setOnClickListener {
+            ordenarNumericamente()
         }
     }
 
@@ -57,11 +78,19 @@ class MainActivity : AppCompatActivity() {
         val estudiante = Estudiante(nombre, pp1, pp2, pp3)
         estudiantes[nombre] = estudiante
 
-        Toast.makeText(this, "Estudiante guardado: $nombre", Toast.LENGTH_SHORT).show()
-
+        ordenarAlfabeticamente()
         limpiarCampos()
+    }
 
-        // La lista visual (RecyclerView) se conecta en el siguiente commit
+    // Orden natural del TreeMap: alfabético por nombre (clave)
+    private fun ordenarAlfabeticamente() {
+        adapter.actualizarLista(estudiantes.values.toList())
+    }
+
+    // Toma los valores del TreeMap y los ordena por promedio, de mayor a menor
+    private fun ordenarNumericamente() {
+        val listaOrdenada = estudiantes.values.sortedByDescending { it.promedio }
+        adapter.actualizarLista(listaOrdenada)
     }
 
     private fun limpiarCampos() {
