@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F3FA">
+
+    <!-- Barra superior -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registro de Notas"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="#4527A0"
+        android:padding="20dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Tarjeta del formulario -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@android:color/white"
+                android:padding="16dp"
+                android:elevation="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del estudiante"
+                    android:textStyle="bold"
+                    android:textColor="#4527A0" />
+
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ej. Juan Pérez"
+                    android:inputType="textPersonName"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PP1"
+                            android:textStyle="bold"
+                            android:textColor="#4527A0" />
+
+                        <EditText
+                            android:id="@+id/etPP1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="0 - 20"
+                            android:inputType="number"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PP2"
+                            android:textStyle="bold"
+                            android:textColor="#4527A0" />
+
+                        <EditText
+                            android:id="@+id/etPP2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="0 - 20"
+                            android:inputType="number"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PP3"
+                            android:textStyle="bold"
+                            android:textColor="#4527A0" />
+
+                        <EditText
+                            android:id="@+id/etPP3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="0 - 20"
+                            android:inputType="number"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="GUARDAR"
+                    android:backgroundTint="#4527A0"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp" />
+
+            </LinearLayout>
+
+            <!-- Reglas de evaluación -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#EDE7F6"
+                android:padding="16dp"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reglas de evaluación"
+                    android:textStyle="bold"
+                    android:textColor="#4527A0"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="● 13 a más   →   Aprobado"
+                    android:textColor="#2E7D32"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="● 10 a 12   →   Sustitutorio"
+                    android:textColor="#F9A825"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="● Menor de 10   →   Desaprobado"
+                    android:textColor="#C62828" />
+
+            </LinearLayout>
+
+            <!-- Encabezado de la lista -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Lista de estudiantes"
+                    android:textStyle="bold"
+                    android:textColor="#4527A0"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnOrdenAlfabetico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A-Z"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnOrdenNumerico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1-9" />
+
+            </LinearLayout>
+
+            <!-- Lista de estudiantes -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEstudiantes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="false" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
